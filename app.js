@@ -4,6 +4,8 @@ const https = require("https");
 
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -60,6 +62,6 @@ app.post("/failure", function(req, res) {
 });
 
 // The "process" object is defined by the hosting service, such as HEROKU
-app.listen(process.env.PORT || 3000, function() {
-    console.log("Server is running");
+app.listen(port, function() {
+    console.log(`Server is running on port ${port}`);
 });
